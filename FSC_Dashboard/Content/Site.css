@@ -1,0 +1,80 @@
+﻿.box {
+    border-top: 1px dotted #545454;
+    /*border-right: 1px dotted #545454;
+    border-left: 1px dotted #545454;*/
+    /*border-bottom: 1px dotted #545454;*/
+}
+
+.box-header {
+    background-color: black;
+}
+
+.box-header.with-border {
+    border-bottom:none
+}
+
+.box-body {
+    border: 1px dotted #545454;
+    background-color: black;
+}
+
+.nav-tabs-custom > .nav-tabs {
+    border: 1px dotted #545454;
+    background-color: black;
+    color:white;
+}
+
+.nav-tabs {
+    border-bottom: 1px dotted #545454 !important;
+    color: white;
+}
+
+.nav-tabs-custom > .nav-tabs > li > a {
+    color: #fff2f2;
+}
+
+.nav-tabs-custom > .tab-content {
+    background: #1d1d1d;
+}
+
+.nav-tabs-custom > .nav-tabs > li:first-of-type.active > a {
+}
+
+.sidebar {
+    background-color: #343a40;
+}
+
+.skin-black-light .sidebar-menu > li:hover > a, .skin-black-light .sidebar-menu > li.active > a {
+    color: white;
+    background: #007bff;
+}
+
+.skin-black-light .sidebar-menu > li > .treeview-menu {
+    background: #343a40;
+}
+
+.skin-black-light .sidebar-menu .treeview-menu > li.active > a, .skin-black-light .sidebar-menu .treeview-menu > li > a:hover {
+    color: #fff;
+}
+
+.skin-black-light .main-sidebar {
+    border-right: 0px solid #d2d6de;
+}
+
+.skin-black-light .sidebar a {
+    color: #ffffff;
+}
+
+.skin-black-light .sidebar-menu > li > a {
+    border-left: 0px solid transparent;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.sidebar-mini.sidebar-collapse .sidebar-menu > li > a > span {
+    font-size: 15px;
+}
+
+.user-panel {
+    padding: 0px !important;
+}

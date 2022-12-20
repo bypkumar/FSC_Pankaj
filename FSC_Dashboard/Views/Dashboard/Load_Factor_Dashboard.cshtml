@@ -1,0 +1,212 @@
+﻿
+<style>
+    .chart-area {
+        border: 1px dotted #545454;
+        height: 250px
+    }
+
+    .dotted-border {
+        border: 1px dotted #545454;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .content-header {
+        border: 1px dotted #545454;
+        width: 100%;
+        margin-left: -10px;
+        margin-right: 10px;
+    }
+
+    .flight-sec-right {
+        border: 1px dotted #545454;
+        height: 250px;
+        width: 100%;
+        margin-left: -10px;
+    }
+
+    .flight-sec-left {
+        /*border: 1px dotted white;*/
+        height: 250px;
+        width: 100%;
+        /*margin-left: -20px;*/
+    }
+
+    .otp-title-sec-right {
+        border: 1px dotted #545454;
+        height: 25px;
+        width: 100%;
+        margin-left: -10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .otp-title-sec-left {
+        border: 1px dotted #545454;
+        height: 25px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        /*margin-left: -20px;*/
+    }
+
+    .otp-title-sec-center {
+        border: 1px dotted #545454;
+        height: 25px;
+        width: 100%;
+        /*margin-left: -10px;*/
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .flight-sec-center {
+        border: 1px dotted #545454;
+        height: 250px;
+        width: 100%;
+        /*margin-left: -20px;*/
+    }
+
+    .highcharts-figure .chart-container {
+        width: 100px;
+        /*height: 250px;*/
+        float: left;
+    }
+
+    #bar_flightTypeAnlysis {
+        height: 250px;
+    }
+
+    #bar_otp_metro {
+        height: 250px;
+    }
+
+    #bar_disruption {
+        height: 250px;
+    }
+
+    #plannedVsActual {
+        height: 250px;
+    }
+
+    .last-section {
+        margin-bottom: 10px;
+    }
+
+    .display_inline {
+        display: inline;
+        margin: 5px 5px;
+        width: 20%;
+    }
+</style>
+
+<section class="content" style="margin-top:10px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">OTP Dashboard Filter</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        @*<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row col-12">
+                        <div class="col-md-12">
+                            <select class="form-control match-content display_inline" onchange="dateRangeChange()" id="dateRangeDD">
+                                <option value="0">Date Range</option>
+                                <option value="1">Current Day</option>
+                                <option value="1">Current Month</option>
+                                <option value="3">Previous Day</option>
+                                <option value="2">Previous Month</option>
+                                <option value="4">Current Quarter</option>
+                                <option value="5">Previous Quarter</option>
+                                <option value="6">Custom Date Range</option>
+                                <option value="7">Custom Date</option>
+
+                            </select>
+                            <input type="text" class="form-control display_inline" id="TxtFromDate" placeholder="From Date" autocomplete="off" />
+                            <script>
+                                $(function () {
+                                    $("#TxtFromDate").datepicker({
+                                        dateFormat: 'dd-mm-yy',
+                                        changeMonth: true,
+                                        changeYear: true,
+                                        showButtonPanel: true,
+                                        onSelect: function (dateStr) {
+                                            var min = $(this).datepicker('getDate') || new Date(); // Selected date or today if none
+                                            $('#TxtToDate').datepicker('option', { minDate: min });
+                                        }
+                                    });
+                                });
+                            </script>
+
+                            <input type="text" class="form-control display_inline" id="TxtToDate" placeholder="To Date" autocomplete="off" />
+                            <script>
+                                $(function () {
+                                    $("#TxtToDate").datepicker({
+                                        changeMonth: true,
+                                        changeYear: true,
+                                        showButtonPanel: true,
+                                        dateFormat: 'dd-mm-yy'
+                                    });
+                                });
+                            </script>
+
+
+                            <button type="button" id="btnShowDetails" class="btn btn-primary center" style="margin-left: 5px;"><i class="fa fa-search" aria-hidden="true"></i> Generate</button>
+                            <button type="button" id="btnClearDetails" class="btn btn-primary center " style="margin-left: 10px;"><i class="fa fa-times-circle-o" aria-hidden="true"></i> Clear</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="content">
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-md-12 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#Load_Factor" data-toggle="tab">Load Factor</a></li>
+                   
+                </ul>
+                <div class="tab-content no-padding">
+                    <!-- Morris chart - Sales -->
+                    <div class="chart tab-pane active" id="Load_Factor" style="position: relative; height: 300px;">
+                        <h1>Load Factor</h1>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </section>
+        <!-- /.Left col -->
+    </div>
+</section>
+
+
+
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+<script src="~/Scripts/pages/Dashboard/LoadFactor_Dashboard.js"></script>
